@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,7 +29,32 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        {children}
+
+        <Script
+          id="chatwoot-sdk"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(d,t) {
+                var BASE_URL="https://app.chatwoot.com";
+                var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+                g.src=BASE_URL+"/packs/js/sdk.js";
+                g.async = true;
+                s.parentNode.insertBefore(g,s);
+                g.onload=function(){
+                  window.chatwootSDK.run({
+                    websiteToken: '48RLNauEWH3FXz7C62XbUZ3W',
+                    baseUrl: BASE_URL
+                  })
+                }
+              })(document,"script");
+            `,
+          }}
+        />
+
       </body>
     </html>
   );
 }
+
