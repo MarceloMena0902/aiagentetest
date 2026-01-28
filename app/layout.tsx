@@ -30,7 +30,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
-        {children}
+        
 
         <Script
           id="n8n-chat-widget"
@@ -40,7 +40,7 @@ export default function RootLayout({
           onLoad={() => {
             // @ts-ignore
             window.Chat.createChat({
-              webhookUrl: 'TU_URL_DE_N8N_CHAT_TRIGGER', // Reemplaza por la URL de "Production" de tu Chat Trigger
+              webhookUrl: 'Thttps://marcelomena.app.n8n.cloud/webhook/183180e2-0bfe-41a9-b48c-faac017ed657/chat', // Reemplaza por la URL de "Production" de tu Chat Trigger
               i18n: {
                 en: {
                   title: 'Asistente de IA',
