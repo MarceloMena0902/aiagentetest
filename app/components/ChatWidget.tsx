@@ -10,7 +10,7 @@ export default function ChatWidget() {
         mode: 'window',
         showWelcomeScreen: true,
         allowFileUploads: true,
-        allowVoiceMessages: true, // Habilita el micrófono para grabar directamente
+        allowVoiceMessages: true, // ESTO ACTIVA EL MICRÓFONO
         initialMessages: [
           '¡Hola! Soy tu asistente de IA. 👋',
           '¿Cómo puedo ayudarte hoy?'
