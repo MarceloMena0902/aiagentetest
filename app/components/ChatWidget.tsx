@@ -66,26 +66,26 @@ export default function UltimateChatWidget() {
     }
   };
 
-  const confirmAndSendAudio = () => {
+ const confirmAndSendAudio = () => {
     if (mediaRecorderRef.current && isRecording) {
       mediaRecorderRef.current.onstop = () => {
-        // Creamos el archivo de audio real
+        // Forzamos el tipo de audio para que el navegador lo reconozca
         const audioBlob = new Blob(audioChunksRef.current, { type: 'audio/webm;codecs=opus' });
+        
+        // Creamos una URL que el elemento <audio> pueda leer
         const audioUrl = URL.createObjectURL(audioBlob);
         
-        // Actualizamos mensajes para que el audio sea reproducible en el chat
+        // Lo añadimos al chat para reproducción inmediata
         setMessages(prev => [...prev, { 
           audioUrl: audioUrl, 
           isAi: false, 
-          text: "" 
+          text: "" // Mantenemos el campo text para evitar errores de TS
         }]);
         
-        // Enviamos a n8n como binario
         const fd = new FormData();
-        fd.append('data', audioBlob, 'voice.webm'); // n8n recibirá esto en la propiedad 'data'
+        fd.append('data', audioBlob, 'voice.webm'); // El campo 'data' que n8n ahora espera
         sendToN8n(fd);
       };
-      
       mediaRecorderRef.current.stop();
       setIsRecording(false);
     }
