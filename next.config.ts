@@ -6,9 +6,9 @@ const nextConfig: NextConfig = {
       {
         source: '/(.*)',
         headers: [
-         {
+          {
             key: 'Content-Security-Policy',
-            value: "default-src 'self'; media-src 'self' blob:; script-src 'self' 'unsafe-eval' 'unsafe-inline';",
+            value: "default-src 'self'; style-src 'self' 'unsafe-inline'; media-src 'self' blob:; connect-src 'self' https://marcelomena.app.n8n.cloud;",
           },
         ],
       },
