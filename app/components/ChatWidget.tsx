@@ -31,7 +31,7 @@ export default function UltimateChatWidget() {
     if (!isAudio) formData.append('chatInput', body);
 
     try {
-      const res = await fetch('https://marcelomena.app.n8n.cloud/webhook/183180e2-0bfe-41a9-b48c-faac017ed657/chat', {
+      const res = await fetch('https://mmemo.app.n8n.cloud/webhook/183180e2-0bfe-41a9-b48c-faac017ed657/chat', {
         method: 'POST',
         body: formData,
       });
