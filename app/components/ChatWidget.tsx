@@ -15,12 +15,16 @@ export default function ChatWidget() {
         if (n8nChat) {
           n8nChat.createChat({
             webhookUrl: 'https://marcelomena.app.n8n.cloud/webhook/183180e2-0bfe-41a9-b48c-faac017ed657/chat',
+            mode: 'window', // Asegura que aparezca la burbuja flotante
             showWelcomeScreen: true,
-            title: 'Asistente IA',
+            // OPCIONES CRÍTICAS PARA AUDIO/ARCHIVOS:
+            allowFileUploads: true, 
+            allowedFilesMimeTypes: 'audio/*,image/*', 
             i18n: {
               en: {
-                inputPlaceholder: 'Escribe o graba un audio...',
-                sendButtonText: 'Enviar'
+                title: 'Asistente IA 👋',
+                inputPlaceholder: 'Escribe o envía un audio...',
+                getStarted: 'Nueva conversación',
               }
             }
           });
