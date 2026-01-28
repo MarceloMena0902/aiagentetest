@@ -31,27 +31,30 @@ export default function RootLayout({
       >
         {children}
         
-
         <Script
           id="n8n-chat-widget"
           strategy="afterInteractive"
           src="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js"
           type="module"
           onLoad={() => {
-            // @ts-ignore
-            window.Chat.createChat({
-              webhookUrl: 'Thttps://marcelomena.app.n8n.cloud/webhook/183180e2-0bfe-41a9-b48c-faac017ed657/chat', // Reemplaza por la URL de "Production" de tu Chat Trigger
-              i18n: {
-                en: {
-                  title: 'Asistente de IA',
-                  sendButtonText: 'Enviar',
-                  inputPlaceholder: 'Escribe o graba un audio...',
+            // Declaramos Chat como 'any' para evitar el error de tipos de TypeScript
+            const n8nChat = (window as any).Chat;
+            
+            if (n8nChat) {
+              n8nChat.createChat({
+                webhookUrl: 'https://marcelomena.app.n8n.cloud/webhook/183180e2-0bfe-41a9-b48c-faac017ed657/chat',
+                showWelcomeScreen: true,
+                title: 'Asistente IA',
+                i18n: {
+                  en: {
+                    inputPlaceholder: 'Escribe o graba un audio...',
+                    sendButtonText: 'Enviar'
+                  }
                 }
-              }
-            });
+              });
+            }
           }}
         />
-
       </body>
     </html>
   );
