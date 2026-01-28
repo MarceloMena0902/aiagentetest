@@ -8,9 +8,7 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: 'Content-Security-Policy',
-            // Agregamos 'unsafe-eval' para el funcionamiento interno del widget 
-            // y permitimos el dominio de jsdelivr para cargar el script y estilos.
-            value: "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; object-src 'none';",
+            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; connect-src 'self' https://marcelomena.app.n8n.cloud https://cdn.jsdelivr.net; img-src 'self' data: https://cdn.jsdelivr.net; worker-src 'self' blob:; object-src 'none';",
           },
         ],
       },
