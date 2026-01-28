@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
+import "@n8n/chat/style.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,24 +33,22 @@ export default function RootLayout({
         {children}
 
         <Script
-          id="chatwoot-sdk"
+          id="n8n-chat-widget"
           strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(d,t) {
-                var BASE_URL="https://app.chatwoot.com";
-                var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-                g.src=BASE_URL+"/packs/js/sdk.js";
-                g.async = true;
-                s.parentNode.insertBefore(g,s);
-                g.onload=function(){
-                  window.chatwootSDK.run({
-                    websiteToken: '48RLNauEWH3FXz7C62XbUZ3W',
-                    baseUrl: BASE_URL
-                  })
+          src="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js"
+          type="module"
+          onLoad={() => {
+            // @ts-ignore
+            window.Chat.createChat({
+              webhookUrl: 'TU_URL_DE_N8N_CHAT_TRIGGER', // Reemplaza por la URL de "Production" de tu Chat Trigger
+              i18n: {
+                en: {
+                  title: 'Asistente de IA',
+                  sendButtonText: 'Enviar',
+                  inputPlaceholder: 'Escribe o graba un audio...',
                 }
-              })(document,"script");
-            `,
+              }
+            });
           }}
         />
 

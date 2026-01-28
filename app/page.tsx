@@ -92,7 +92,7 @@ export default function Home() {
                   </button>
                 </div>
                 <p className="mt-3 text-xs text-zinc-500">
-                  Luego reemplazas esto por tu burbuja real (Chatwoot/WebWidget).
+                  Usa la burbuja de chat en la esquina inferior para hablar conmigo por texto o voz.
                 </p>
               </div>
             </div>
