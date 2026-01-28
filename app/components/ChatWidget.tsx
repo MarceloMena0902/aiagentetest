@@ -10,7 +10,7 @@ export default function ChatWidget() {
         mode: 'window',
         showWelcomeScreen: true,
         allowFileUploads: true,
-        allowVoiceMessages: true, // Esto activará el micrófono en el widget
+        allowVoiceMessages: true, // Habilita el micrófono para grabar directamente
         initialMessages: [
           '¡Hola! Soy tu asistente de IA. 👋',
           '¿Cómo puedo ayudarte hoy?'
@@ -22,9 +22,13 @@ export default function ChatWidget() {
             footer: '',
             getStarted: 'Empezar',
             inputPlaceholder: 'Escribe o graba un audio...',
+            closeButtonTooltip: 'Cerrar',
+            feedbackPlaceholder: 'Tu mensaje...',
+            feedbackTitle: 'Feedback',
+            feedbackSubmitButtonText: 'Enviar'
           },
-        } as any, // El "as any" elimina los errores de propiedades faltantes
-      } as any); // El "as any" aquí permite usar allowVoiceMessages sin error
+        } as any, 
+      } as any); 
     });
   }, []);
 
