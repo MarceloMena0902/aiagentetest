@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useRef, useEffect } from 'react';
 import './ChatWidget.css'; // Asegúrate de que el nombre coincida con tu archivo
+import ReactMarkdown from 'react-markdown';
 
 interface Message {
   text?: string;
@@ -97,7 +98,9 @@ export default function UltimateChatWidget() {
                 {m.audioUrl ? (
                   <audio src={m.audioUrl} controls className="audio-player" />
                 ) : (
-                  <span>{m.text}</span>
+                  <div className="markdown-content">
+                    <ReactMarkdown>{m.text || ""}</ReactMarkdown>
+                  </div>
                 )}
               </div>
             ))}
